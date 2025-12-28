@@ -8,6 +8,7 @@ META
     control `V-242386`
     title `etcd must have client certificate authentication enabled`
     platform `kubernetes`
+    agent_type `controller`
     criticality `critical`
     tags `stig,kubernetes,etcd,certificates,client-auth`
 META_END

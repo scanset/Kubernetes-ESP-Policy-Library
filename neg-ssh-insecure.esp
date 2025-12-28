@@ -7,13 +7,14 @@ META
     control `NEG-001`
     title `NEGATIVE TEST - SSH permits root login (SHOULD FAIL)`
     platform `linux`
+    agent_type `daemon`
     criticality `test`
     tags `negative-test,ssh,insecure`
 META_END
 
 DEF
     OBJECT sshd_config_insecure
-        path `/etc/ssh/sshd_config_insecure`
+        path `/etc/ssh/sshd_config`
     OBJECT_END
 
     # This check looks for secure config - will FAIL on insecure file

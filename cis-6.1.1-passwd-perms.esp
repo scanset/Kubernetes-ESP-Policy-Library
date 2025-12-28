@@ -7,6 +7,7 @@ META
     control `6.1.1`
     title `Ensure permissions on /etc/passwd are configured`
     platform `linux`
+    agent_type `daemon`
     criticality `high`
     tags `cis,filesystem,authentication,permissions`
 META_END

@@ -8,6 +8,7 @@ META
     control `V-242379`
     title `etcd must have TLS configured`
     platform `kubernetes`
+    agent_type `controller`
     criticality `critical`
     tags `stig,kubernetes,etcd,tls,certificates`
 META_END

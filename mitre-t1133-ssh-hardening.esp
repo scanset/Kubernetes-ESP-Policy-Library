@@ -7,6 +7,7 @@ META
     control `T1133`
     title `External Remote Services - SSH Hardening`
     platform `linux`
+    agent_type `daemon`
     criticality `high`
     tags `mitre,initial-access,ssh,remote-services`
 META_END

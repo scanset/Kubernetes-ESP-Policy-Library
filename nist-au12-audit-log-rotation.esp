@@ -7,13 +7,14 @@ META
     control `AU-12`
     title `Audit Generation - Log rotation configured`
     platform `linux`
+    agent_type `daemon`
     criticality `medium`
     tags `nist,audit,logging,rotation`
 META_END
 
 DEF
     OBJECT auditd_config
-        path `scanfiles/etc/audit/auditd.conf`
+        path `/etc/audit/auditd.conf`
     OBJECT_END
 
     STATE log_rotation_action

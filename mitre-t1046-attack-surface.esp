@@ -7,6 +7,7 @@ META
     control `T1046`
     title `Network Service Discovery - Reduce attack surface`
     platform `linux`
+    agent_type `daemon`
     criticality `medium`
     tags `mitre,discovery,network,ports`
 META_END

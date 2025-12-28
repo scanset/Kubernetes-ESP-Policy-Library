@@ -8,6 +8,7 @@ META
     control `V-242384`
     title `Scheduler must be bound to localhost`
     platform `kubernetes`
+    agent_type `controller`
     criticality `high`
     tags `stig,kubernetes,scheduler,network,binding`
 META_END

@@ -8,6 +8,7 @@ META
     control `V-242383`
     title `Default namespace must only have kubernetes service`
     platform `kubernetes`
+    agent_type `controller`
     criticality `medium`
     tags `stig,kubernetes,namespace,workloads,isolation`
 META_END

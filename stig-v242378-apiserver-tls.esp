@@ -8,6 +8,7 @@ META
     control `V-242378`
     title `API Server must have TLS certificates configured`
     platform `kubernetes`
+    agent_type `controller`
     criticality `critical`
     tags `stig,kubernetes,apiserver,tls,certificates`
 META_END

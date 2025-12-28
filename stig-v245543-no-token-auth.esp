@@ -8,6 +8,7 @@ META
     control `V-245543`
     title `API Server must not use static token authentication`
     platform `kubernetes`
+    agent_type `controller`
     criticality `critical`
     tags `stig,kubernetes,apiserver,authentication,token-auth`
 META_END

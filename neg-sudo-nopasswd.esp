@@ -7,6 +7,7 @@ META
     control `NEG-002`
     title `NEGATIVE TEST - Sudoers has NOPASSWD (SHOULD FAIL)`
     platform `linux`
+    agent_type `daemon`
     criticality `test`
     tags `negative-test,sudo,nopasswd`
 META_END

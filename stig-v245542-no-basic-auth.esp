@@ -8,6 +8,7 @@ META
     control `V-245542`
     title `API Server must not use basic authentication`
     platform `kubernetes`
+    agent_type `controller`
     criticality `critical`
     tags `stig,kubernetes,apiserver,authentication,basic-auth`
 META_END

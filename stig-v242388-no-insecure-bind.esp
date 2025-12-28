@@ -8,6 +8,7 @@ META
     control `V-242388`
     title `API Server must not have insecure bind address`
     platform `kubernetes`
+    agent_type `controller`
     criticality `critical`
     tags `stig,kubernetes,apiserver,network,security`
 META_END

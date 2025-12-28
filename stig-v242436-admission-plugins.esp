@@ -8,6 +8,7 @@ META
     control `V-242436`
     title `API Server must have admission plugins enabled`
     platform `kubernetes`
+    agent_type `controller`
     criticality `high`
     tags `stig,kubernetes,apiserver,admission,security`
 META_END
