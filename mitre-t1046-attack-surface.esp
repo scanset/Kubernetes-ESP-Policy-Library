@@ -1,0 +1,60 @@
+# MITRE ATT&CK T1046 - Network Service Discovery
+# Ensure unnecessary services not exposed
+
+META
+    esp_scan_id `mitre-t1046-reduce-attack-surface`
+    control_framework `MITRE-ATTACK`
+    control `T1046`
+    title `Network Service Discovery - Reduce attack surface`
+    platform `linux`
+    criticality `medium`
+    tags `mitre,discovery,network,ports`
+META_END
+
+DEF
+    # Common ports that shouldn't be open unless needed
+    
+    # SMTP - mail server
+    OBJECT smtp_port
+        port 25
+    OBJECT_END
+
+    # HTTP - web server (dev only)
+    OBJECT http_port
+        port 80
+    OBJECT_END
+
+    # MySQL
+    OBJECT mysql_port
+        port 3306
+    OBJECT_END
+
+    # PostgreSQL
+    OBJECT postgres_port
+        port 5432
+    OBJECT_END
+
+    STATE not_listening
+        listening boolean = false
+    STATE_END
+
+    CRI AND
+        CTN tcp_listener
+            TEST all all
+            STATE_REF not_listening
+            OBJECT_REF smtp_port
+        CTN_END
+
+        CTN tcp_listener
+            TEST all all
+            STATE_REF not_listening
+            OBJECT_REF mysql_port
+        CTN_END
+
+        CTN tcp_listener
+            TEST all all
+            STATE_REF not_listening
+            OBJECT_REF postgres_port
+        CTN_END
+    CRI_END
+DEF_END

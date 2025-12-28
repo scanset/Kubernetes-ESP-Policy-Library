@@ -1,0 +1,42 @@
+# DISA STIG - API Server must have TLS certificates configured
+# Check: --tls-cert-file and --tls-private-key-file configured
+# Your cluster: Both configured
+
+META
+    esp_scan_id `stig-apiserver-tls-certs`
+    control_framework `DISA-STIG`
+    control `V-242378`
+    title `API Server must have TLS certificates configured`
+    platform `kubernetes`
+    criticality `critical`
+    tags `stig,kubernetes,apiserver,tls,certificates`
+META_END
+
+DEF
+    OBJECT apiserver_pod
+        kind `Pod`
+        namespace `kube-system`
+        label_selector `component=kube-apiserver`
+    OBJECT_END
+
+    STATE has_tls_cert
+        record
+            field spec.containers.0.command string contains `--tls-cert-file=` at_least_one
+        record_end
+    STATE_END
+
+    STATE has_tls_key
+        record
+            field spec.containers.0.command string contains `--tls-private-key-file=` at_least_one
+        record_end
+    STATE_END
+
+    CRI AND
+        CTN k8s_resource
+            TEST all all AND
+            STATE_REF has_tls_cert
+            STATE_REF has_tls_key
+            OBJECT_REF apiserver_pod
+        CTN_END
+    CRI_END
+DEF_END

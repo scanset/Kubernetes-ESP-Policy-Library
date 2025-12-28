@@ -1,0 +1,30 @@
+# CIS Benchmark 5.3.4 - Ensure sudo log file exists
+# Expected: Defaults logfile configured in sudoers
+
+META
+    esp_scan_id `cis-5.3.4-sudo-logfile`
+    control_framework `CIS`
+    control `5.3.4`
+    title `Ensure sudo log file exists`
+    platform `linux`
+    criticality `medium`
+    tags `cis,sudo,logging,audit`
+META_END
+
+DEF
+    OBJECT sudoers_file
+        path `/etc/sudoers`
+    OBJECT_END
+
+    STATE sudo_logfile_configured
+        content string contains `Defaults    logfile=`
+    STATE_END
+
+    CRI AND
+        CTN file_content
+            TEST all all
+            STATE_REF sudo_logfile_configured
+            OBJECT_REF sudoers_file
+        CTN_END
+    CRI_END
+DEF_END

@@ -1,0 +1,45 @@
+# MITRE ATT&CK T1562.001 - Impair Defenses: Disable or Modify Tools
+# Ensure audit configuration is protected from tampering
+
+META
+    esp_scan_id `mitre-t1562.001-audit-protection`
+    control_framework `MITRE-ATTACK`
+    control `T1562.001`
+    title `Impair Defenses Prevention - Audit config protection`
+    platform `linux`
+    criticality `high`
+    tags `mitre,defense-evasion,audit,logging`
+META_END
+
+DEF
+    OBJECT auditd_config
+        path `scanfiles/etc/audit/auditd.conf`
+    OBJECT_END
+
+    STATE restrictive_permissions
+        permissions string = `0640`
+    STATE_END
+
+    STATE owned_by_root
+        owner string = `0`
+    STATE_END
+
+    STATE has_log_file
+        content string contains `log_file = `
+    STATE_END
+
+    CRI AND
+        CTN file_metadata
+            TEST all all AND
+            STATE_REF restrictive_permissions
+            STATE_REF owned_by_root
+            OBJECT_REF auditd_config
+        CTN_END
+
+        CTN file_content
+            TEST all all
+            STATE_REF has_log_file
+            OBJECT_REF auditd_config
+        CTN_END
+    CRI_END
+DEF_END

@@ -1,0 +1,35 @@
+# DISA STIG V-242388 - API Server must not have insecure bind address
+# Check: --insecure-bind-address must NOT be present
+# Your cluster: Not present
+
+META
+    esp_scan_id `stig-v242388-no-insecure-bind`
+    control_framework `DISA-STIG`
+    control `V-242388`
+    title `API Server must not have insecure bind address`
+    platform `kubernetes`
+    criticality `critical`
+    tags `stig,kubernetes,apiserver,network,security`
+META_END
+
+DEF
+    OBJECT apiserver_pod
+        kind `Pod`
+        namespace `kube-system`
+        label_selector `component=kube-apiserver`
+    OBJECT_END
+
+    STATE no_insecure_bind
+        record
+            field spec.containers.0.command string not_contains `--insecure-bind-address` all
+        record_end
+    STATE_END
+
+    CRI AND
+        CTN k8s_resource
+            TEST all all
+            STATE_REF no_insecure_bind
+            OBJECT_REF apiserver_pod
+        CTN_END
+    CRI_END
+DEF_END

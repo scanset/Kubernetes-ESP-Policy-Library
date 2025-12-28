@@ -1,0 +1,42 @@
+# DISA STIG V-245544 - API Server must have kubelet client certificate authentication
+# Check: --kubelet-client-certificate and --kubelet-client-key configured
+# Your cluster: Both configured
+
+META
+    esp_scan_id `stig-v245544-kubelet-client-certs`
+    control_framework `DISA-STIG`
+    control `V-245544`
+    title `API Server must have kubelet client certificate configured`
+    platform `kubernetes`
+    criticality `high`
+    tags `stig,kubernetes,apiserver,certificates,kubelet`
+META_END
+
+DEF
+    OBJECT apiserver_pod
+        kind `Pod`
+        namespace `kube-system`
+        label_selector `component=kube-apiserver`
+    OBJECT_END
+
+    STATE has_kubelet_client_cert
+        record
+            field spec.containers.0.command string contains `--kubelet-client-certificate=` at_least_one
+        record_end
+    STATE_END
+
+    STATE has_kubelet_client_key
+        record
+            field spec.containers.0.command string contains `--kubelet-client-key=` at_least_one
+        record_end
+    STATE_END
+
+    CRI AND
+        CTN k8s_resource
+            TEST all all AND
+            STATE_REF has_kubelet_client_cert
+            STATE_REF has_kubelet_client_key
+            OBJECT_REF apiserver_pod
+        CTN_END
+    CRI_END
+DEF_END

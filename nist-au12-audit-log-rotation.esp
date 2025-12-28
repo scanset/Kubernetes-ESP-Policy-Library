@@ -1,0 +1,35 @@
+# NIST 800-53 AU-12 - Audit Generation
+# Ensure audit daemon has log rotation configured
+
+META
+    esp_scan_id `nist-au12-audit-log-rotation`
+    control_framework `NIST-800-53`
+    control `AU-12`
+    title `Audit Generation - Log rotation configured`
+    platform `linux`
+    criticality `medium`
+    tags `nist,audit,logging,rotation`
+META_END
+
+DEF
+    OBJECT auditd_config
+        path `scanfiles/etc/audit/auditd.conf`
+    OBJECT_END
+
+    STATE log_rotation_action
+        content string contains `max_log_file_action = ROTATE`
+    STATE_END
+
+    STATE num_logs_configured
+        content string contains `num_logs = `
+    STATE_END
+
+    CRI AND
+        CTN file_content
+            TEST all all AND
+            STATE_REF log_rotation_action
+            STATE_REF num_logs_configured
+            OBJECT_REF auditd_config
+        CTN_END
+    CRI_END
+DEF_END

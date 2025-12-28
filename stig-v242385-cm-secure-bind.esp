@@ -1,0 +1,35 @@
+# DISA STIG V-242385 - Controller Manager must be bound to localhost
+# Check: --bind-address=127.0.0.1
+# Your cluster: --bind-address=127.0.0.1
+
+META
+    esp_scan_id `stig-v242385-cm-secure-bind`
+    control_framework `DISA-STIG`
+    control `V-242385`
+    title `Controller Manager must be bound to localhost`
+    platform `kubernetes`
+    criticality `high`
+    tags `stig,kubernetes,controller-manager,network,binding`
+META_END
+
+DEF
+    OBJECT controller_manager_pod
+        kind `Pod`
+        namespace `kube-system`
+        label_selector `component=kube-controller-manager`
+    OBJECT_END
+
+    STATE bound_to_localhost
+        record
+            field spec.containers.0.command string contains `--bind-address=127.0.0.1` at_least_one
+        record_end
+    STATE_END
+
+    CRI AND
+        CTN k8s_resource
+            TEST all all
+            STATE_REF bound_to_localhost
+            OBJECT_REF controller_manager_pod
+        CTN_END
+    CRI_END
+DEF_END

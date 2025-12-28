@@ -1,0 +1,35 @@
+# DISA STIG V-242386 - etcd must have peer client certificate authentication enabled
+# Check: --peer-client-cert-auth=true
+# Your cluster: --peer-client-cert-auth=true
+
+META
+    esp_scan_id `stig-v242386-etcd-peer-auth`
+    control_framework `DISA-STIG`
+    control `V-242386`
+    title `etcd must have peer client certificate authentication enabled`
+    platform `kubernetes`
+    criticality `critical`
+    tags `stig,kubernetes,etcd,certificates,peer-auth`
+META_END
+
+DEF
+    OBJECT etcd_pod
+        kind `Pod`
+        namespace `kube-system`
+        label_selector `component=etcd`
+    OBJECT_END
+
+    STATE peer_cert_auth_enabled
+        record
+            field spec.containers.0.command string contains `--peer-client-cert-auth=true` at_least_one
+        record_end
+    STATE_END
+
+    CRI AND
+        CTN k8s_resource
+            TEST all all
+            STATE_REF peer_cert_auth_enabled
+            OBJECT_REF etcd_pod
+        CTN_END
+    CRI_END
+DEF_END

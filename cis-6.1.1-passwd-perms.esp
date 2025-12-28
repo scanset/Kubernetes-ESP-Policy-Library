@@ -1,0 +1,40 @@
+# CIS Benchmark 6.1.1 - Ensure permissions on /etc/passwd are configured
+# Expected: mode 0644, owner root (0), group root (0)
+
+META
+    esp_scan_id `cis-6.1.1-passwd-perms`
+    control_framework `CIS`
+    control `6.1.1`
+    title `Ensure permissions on /etc/passwd are configured`
+    platform `linux`
+    criticality `high`
+    tags `cis,filesystem,authentication,permissions`
+META_END
+
+DEF
+    OBJECT passwd_file
+        path `/etc/passwd`
+    OBJECT_END
+
+    STATE correct_permissions
+        permissions string = `0644`
+    STATE_END
+
+    STATE correct_owner
+        owner string = `0`
+    STATE_END
+
+    STATE correct_group
+        group string = `0`
+    STATE_END
+
+    CRI AND
+        CTN file_metadata
+            TEST all all AND
+            STATE_REF correct_permissions
+            STATE_REF correct_owner
+            STATE_REF correct_group
+            OBJECT_REF passwd_file
+        CTN_END
+    CRI_END
+DEF_END

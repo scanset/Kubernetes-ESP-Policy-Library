@@ -1,0 +1,35 @@
+# DISA STIG V-245542 - API Server must not use basic authentication
+# Check: --basic-auth-file must NOT be present
+# Your cluster: Not present
+
+META
+    esp_scan_id `stig-v245542-no-basic-auth`
+    control_framework `DISA-STIG`
+    control `V-245542`
+    title `API Server must not use basic authentication`
+    platform `kubernetes`
+    criticality `critical`
+    tags `stig,kubernetes,apiserver,authentication,basic-auth`
+META_END
+
+DEF
+    OBJECT apiserver_pod
+        kind `Pod`
+        namespace `kube-system`
+        label_selector `component=kube-apiserver`
+    OBJECT_END
+
+    STATE no_basic_auth
+        record
+            field spec.containers.0.command string not_contains `--basic-auth-file` all
+        record_end
+    STATE_END
+
+    CRI AND
+        CTN k8s_resource
+            TEST all all
+            STATE_REF no_basic_auth
+            OBJECT_REF apiserver_pod
+        CTN_END
+    CRI_END
+DEF_END

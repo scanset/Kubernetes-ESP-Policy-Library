@@ -1,0 +1,53 @@
+# CIS / MITRE - Ensure dangerous services not listening
+# Tests that common insecure ports are not in use
+
+META
+    esp_scan_id `tcp-dangerous-ports-closed`
+    control_framework `CIS`
+    control `2.1`
+    title `Ensure legacy services are not enabled`
+    platform `linux`
+    criticality `high`
+    tags `cis,network,tcp,services`
+META_END
+
+DEF
+    # Telnet - cleartext protocol
+    OBJECT telnet_port
+        port 23
+    OBJECT_END
+
+    # FTP - cleartext protocol  
+    OBJECT ftp_port
+        port 21
+    OBJECT_END
+
+    # RPC portmapper
+    OBJECT rpc_port
+        port 111
+    OBJECT_END
+
+    STATE not_listening
+        listening boolean = false
+    STATE_END
+
+    CRI AND
+        CTN tcp_listener
+            TEST all all
+            STATE_REF not_listening
+            OBJECT_REF telnet_port
+        CTN_END
+
+        CTN tcp_listener
+            TEST all all
+            STATE_REF not_listening
+            OBJECT_REF ftp_port
+        CTN_END
+
+        CTN tcp_listener
+            TEST all all
+            STATE_REF not_listening
+            OBJECT_REF rpc_port
+        CTN_END
+    CRI_END
+DEF_END

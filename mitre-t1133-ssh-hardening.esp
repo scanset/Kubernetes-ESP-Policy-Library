@@ -1,0 +1,40 @@
+# MITRE ATT&CK T1133 - External Remote Services
+# Ensure SSH is configured securely to prevent unauthorized remote access
+
+META
+    esp_scan_id `mitre-t1133-ssh-hardening`
+    control_framework `MITRE-ATTACK`
+    control `T1133`
+    title `External Remote Services - SSH Hardening`
+    platform `linux`
+    criticality `high`
+    tags `mitre,initial-access,ssh,remote-services`
+META_END
+
+DEF
+    OBJECT sshd_config_file
+        path `scanfiles/etc/ssh/sshd_config_secure`
+    OBJECT_END
+
+    STATE no_root_login
+        content string contains `PermitRootLogin no`
+    STATE_END
+
+    STATE no_password_auth
+        content string contains `PasswordAuthentication no`
+    STATE_END
+
+    STATE no_empty_passwords
+        content string contains `PermitEmptyPasswords no`
+    STATE_END
+
+    CRI AND
+        CTN file_content
+            TEST all all AND
+            STATE_REF no_root_login
+            STATE_REF no_password_auth
+            STATE_REF no_empty_passwords
+            OBJECT_REF sshd_config_file
+        CTN_END
+    CRI_END
+DEF_END

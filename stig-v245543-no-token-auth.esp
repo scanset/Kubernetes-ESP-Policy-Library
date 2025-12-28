@@ -1,0 +1,35 @@
+# DISA STIG V-245543 - API Server must not use static token authentication
+# Check: --token-auth-file must NOT be present
+# Your cluster: Not present
+
+META
+    esp_scan_id `stig-v245543-no-token-auth`
+    control_framework `DISA-STIG`
+    control `V-245543`
+    title `API Server must not use static token authentication`
+    platform `kubernetes`
+    criticality `critical`
+    tags `stig,kubernetes,apiserver,authentication,token-auth`
+META_END
+
+DEF
+    OBJECT apiserver_pod
+        kind `Pod`
+        namespace `kube-system`
+        label_selector `component=kube-apiserver`
+    OBJECT_END
+
+    STATE no_token_auth_file
+        record
+            field spec.containers.0.command string not_contains `--token-auth-file` all
+        record_end
+    STATE_END
+
+    CRI AND
+        CTN k8s_resource
+            TEST all all
+            STATE_REF no_token_auth_file
+            OBJECT_REF apiserver_pod
+        CTN_END
+    CRI_END
+DEF_END

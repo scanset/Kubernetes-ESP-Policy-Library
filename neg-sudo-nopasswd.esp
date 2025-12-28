@@ -1,0 +1,31 @@
+# NEGATIVE TEST - This policy should FAIL
+# Tests insecure sudoers that has NOPASSWD entries
+
+META
+    esp_scan_id `negative-test-sudo-nopasswd`
+    control_framework `TEST`
+    control `NEG-002`
+    title `NEGATIVE TEST - Sudoers has NOPASSWD (SHOULD FAIL)`
+    platform `linux`
+    criticality `test`
+    tags `negative-test,sudo,nopasswd`
+META_END
+
+DEF
+    OBJECT sudoers_insecure
+        path `/etc/sudoers`
+    OBJECT_END
+
+    # This check ensures NOPASSWD is NOT present - will FAIL on insecure file
+    STATE no_nopasswd
+        content string not_contains `NOPASSWD`
+    STATE_END
+
+    CRI AND
+        CTN file_content
+            TEST all all
+            STATE_REF no_nopasswd
+            OBJECT_REF sudoers_insecure
+        CTN_END
+    CRI_END
+DEF_END

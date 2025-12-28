@@ -1,0 +1,42 @@
+# DISA STIG - etcd must have TLS configured
+# Check: --cert-file and --key-file configured
+# Your cluster: Both configured
+
+META
+    esp_scan_id `stig-etcd-tls-certs`
+    control_framework `DISA-STIG`
+    control `V-242379`
+    title `etcd must have TLS configured`
+    platform `kubernetes`
+    criticality `critical`
+    tags `stig,kubernetes,etcd,tls,certificates`
+META_END
+
+DEF
+    OBJECT etcd_pod
+        kind `Pod`
+        namespace `kube-system`
+        label_selector `component=etcd`
+    OBJECT_END
+
+    STATE has_cert_file
+        record
+            field spec.containers.0.command string contains `--cert-file=` at_least_one
+        record_end
+    STATE_END
+
+    STATE has_key_file
+        record
+            field spec.containers.0.command string contains `--key-file=` at_least_one
+        record_end
+    STATE_END
+
+    CRI AND
+        CTN k8s_resource
+            TEST all all AND
+            STATE_REF has_cert_file
+            STATE_REF has_key_file
+            OBJECT_REF etcd_pod
+        CTN_END
+    CRI_END
+DEF_END

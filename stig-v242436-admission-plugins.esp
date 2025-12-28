@@ -1,0 +1,35 @@
+# DISA STIG V-242436 - API Server must have admission plugins enabled
+# Check: --enable-admission-plugins configured (NodeRestriction at minimum)
+# Your cluster: --enable-admission-plugins=NodeRestriction
+
+META
+    esp_scan_id `stig-v242436-admission-plugins`
+    control_framework `DISA-STIG`
+    control `V-242436`
+    title `API Server must have admission plugins enabled`
+    platform `kubernetes`
+    criticality `high`
+    tags `stig,kubernetes,apiserver,admission,security`
+META_END
+
+DEF
+    OBJECT apiserver_pod
+        kind `Pod`
+        namespace `kube-system`
+        label_selector `component=kube-apiserver`
+    OBJECT_END
+
+    STATE has_admission_plugins
+        record
+            field spec.containers.0.command string contains `--enable-admission-plugins=` at_least_one
+        record_end
+    STATE_END
+
+    CRI AND
+        CTN k8s_resource
+            TEST all all
+            STATE_REF has_admission_plugins
+            OBJECT_REF apiserver_pod
+        CTN_END
+    CRI_END
+DEF_END

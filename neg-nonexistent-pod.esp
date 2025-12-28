@@ -1,0 +1,32 @@
+# NEGATIVE TEST - This policy should FAIL
+# Looks for a pod that doesn't exist
+
+META
+    esp_scan_id `negative-test-nonexistent-pod`
+    control_framework `TEST`
+    control `NEG-K8S-002`
+    title `NEGATIVE TEST - Non-existent pod (SHOULD FAIL)`
+    platform `kubernetes`
+    criticality `test`
+    tags `negative-test,kubernetes,existence`
+META_END
+
+DEF
+    OBJECT nonexistent_pod
+        kind `Pod`
+        namespace `kube-system`
+        label_selector `component=does-not-exist`
+    OBJECT_END
+
+    STATE should_exist
+        found boolean = true
+    STATE_END
+
+    CRI AND
+        CTN k8s_resource
+            TEST all all
+            STATE_REF should_exist
+            OBJECT_REF nonexistent_pod
+        CTN_END
+    CRI_END
+DEF_END

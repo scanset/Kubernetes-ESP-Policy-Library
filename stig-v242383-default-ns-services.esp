@@ -1,0 +1,33 @@
+# DISA STIG V-242383 - Default namespace must not contain user workloads
+# Check: Only 'kubernetes' service should exist in default namespace
+# Your cluster: Only kubernetes service
+
+META
+    esp_scan_id `stig-v242383-default-ns-services`
+    control_framework `DISA-STIG`
+    control `V-242383`
+    title `Default namespace must only have kubernetes service`
+    platform `kubernetes`
+    criticality `medium`
+    tags `stig,kubernetes,namespace,workloads,isolation`
+META_END
+
+DEF
+    OBJECT kubernetes_service
+        kind `Service`
+        namespace `default`
+        name `kubernetes`
+    OBJECT_END
+
+    STATE service_exists
+        found boolean = true
+    STATE_END
+
+    CRI AND
+        CTN k8s_resource
+            TEST all all
+            STATE_REF service_exists
+            OBJECT_REF kubernetes_service
+        CTN_END
+    CRI_END
+DEF_END

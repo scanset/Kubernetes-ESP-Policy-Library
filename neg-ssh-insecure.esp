@@ -1,0 +1,31 @@
+# NEGATIVE TEST - This policy should FAIL
+# Tests insecure sshd_config that permits root login
+
+META
+    esp_scan_id `negative-test-ssh-insecure`
+    control_framework `TEST`
+    control `NEG-001`
+    title `NEGATIVE TEST - SSH permits root login (SHOULD FAIL)`
+    platform `linux`
+    criticality `test`
+    tags `negative-test,ssh,insecure`
+META_END
+
+DEF
+    OBJECT sshd_config_insecure
+        path `/etc/ssh/sshd_config_insecure`
+    OBJECT_END
+
+    # This check looks for secure config - will FAIL on insecure file
+    STATE root_login_disabled
+        content string contains `PermitRootLogin no`
+    STATE_END
+
+    CRI AND
+        CTN file_content
+            TEST all all
+            STATE_REF root_login_disabled
+            OBJECT_REF sshd_config_insecure
+        CTN_END
+    CRI_END
+DEF_END
