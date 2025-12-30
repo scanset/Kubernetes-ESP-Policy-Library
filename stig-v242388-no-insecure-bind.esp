@@ -6,9 +6,9 @@ META
     esp_scan_id `stig-v242388-no-insecure-bind`
     control_framework `DISA-STIG`
     control `V-242388`
+    control_mapping `DISA-STIG:V-242388`
     title `API Server must not have insecure bind address`
     platform `kubernetes`
-    agent_type `controller`
     criticality `critical`
     tags `stig,kubernetes,apiserver,network,security`
 META_END

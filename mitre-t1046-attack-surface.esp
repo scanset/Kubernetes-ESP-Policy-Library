@@ -5,16 +5,16 @@ META
     esp_scan_id `mitre-t1046-reduce-attack-surface`
     control_framework `MITRE-ATTACK`
     control `T1046`
+    control_mapping `MITRE-ATTACK:T1046`
     title `Network Service Discovery - Reduce attack surface`
     platform `linux`
-    agent_type `daemon`
     criticality `medium`
     tags `mitre,discovery,network,ports`
 META_END
 
 DEF
     # Common ports that shouldn't be open unless needed
-    
+
     # SMTP - mail server
     OBJECT smtp_port
         port 25

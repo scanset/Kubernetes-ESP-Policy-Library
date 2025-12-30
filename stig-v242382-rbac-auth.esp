@@ -6,9 +6,9 @@ META
     esp_scan_id `stig-v242382-rbac-auth`
     control_framework `DISA-STIG`
     control `V-242382`
+    control_mapping `DISA-STIG:V-242382`
     title `Kubernetes API Server must have RBAC authorization enabled`
     platform `kubernetes`
-    agent_type `controller`
     criticality `high`
     tags `stig,kubernetes,apiserver,authorization,rbac`
 META_END

@@ -5,9 +5,9 @@ META
     esp_scan_id `cis-6.1.1-passwd-perms`
     control_framework `CIS`
     control `6.1.1`
+    control_mapping `CIS:6.1.1`
     title `Ensure permissions on /etc/passwd are configured`
     platform `linux`
-    agent_type `daemon`
     criticality `high`
     tags `cis,filesystem,authentication,permissions`
 META_END

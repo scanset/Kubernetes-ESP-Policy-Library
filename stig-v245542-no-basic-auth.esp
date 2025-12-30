@@ -6,9 +6,9 @@ META
     esp_scan_id `stig-v245542-no-basic-auth`
     control_framework `DISA-STIG`
     control `V-245542`
+    control_mapping `DISA-STIG:V-245542`
     title `API Server must not use basic authentication`
     platform `kubernetes`
-    agent_type `controller`
     criticality `critical`
     tags `stig,kubernetes,apiserver,authentication,basic-auth`
 META_END

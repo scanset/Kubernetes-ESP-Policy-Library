@@ -5,9 +5,9 @@ META
     esp_scan_id `mitre-t1562.001-audit-protection`
     control_framework `MITRE-ATTACK`
     control `T1562.001`
+    control_mapping `MITRE-ATTACK:T1562.001`
     title `Impair Defenses Prevention - Audit config protection`
     platform `linux`
-    agent_type `daemon`
     criticality `high`
     tags `mitre,defense-evasion,audit,logging`
 META_END

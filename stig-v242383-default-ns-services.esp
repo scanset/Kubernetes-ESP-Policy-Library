@@ -6,9 +6,9 @@ META
     esp_scan_id `stig-v242383-default-ns-services`
     control_framework `DISA-STIG`
     control `V-242383`
+    control_mapping `DISA-STIG:V-242383`
     title `Default namespace must only have kubernetes service`
     platform `kubernetes`
-    agent_type `controller`
     criticality `medium`
     tags `stig,kubernetes,namespace,workloads,isolation`
 META_END

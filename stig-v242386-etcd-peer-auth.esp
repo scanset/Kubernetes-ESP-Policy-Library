@@ -6,9 +6,9 @@ META
     esp_scan_id `stig-v242386-etcd-peer-auth`
     control_framework `DISA-STIG`
     control `V-242386`
+    control_mapping `DISA-STIG:V-242386`
     title `etcd must have peer client certificate authentication enabled`
     platform `kubernetes`
-    agent_type `controller`
     criticality `critical`
     tags `stig,kubernetes,etcd,certificates,peer-auth`
 META_END

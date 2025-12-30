@@ -6,9 +6,9 @@ META
     esp_scan_id `stig-v242385-cm-secure-bind`
     control_framework `DISA-STIG`
     control `V-242385`
+    control_mapping `DISA-STIG:V-242385`
     title `Controller Manager must be bound to localhost`
     platform `kubernetes`
-    agent_type `controller`
     criticality `high`
     tags `stig,kubernetes,controller-manager,network,binding`
 META_END

@@ -5,10 +5,10 @@ META
     esp_scan_id `negative-test-nonexistent-pod`
     control_framework `TEST`
     control `NEG-K8S-002`
+    control_mapping `TEST:NEG-K8S-002`
     title `NEGATIVE TEST - Non-existent pod (SHOULD FAIL)`
     platform `kubernetes`
-    agent_type `controller`
-    criticality `test`
+    criticality `info`
     tags `negative-test,kubernetes,existence`
 META_END
 

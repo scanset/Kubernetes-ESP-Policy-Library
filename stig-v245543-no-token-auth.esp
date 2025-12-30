@@ -6,9 +6,9 @@ META
     esp_scan_id `stig-v245543-no-token-auth`
     control_framework `DISA-STIG`
     control `V-245543`
+    control_mapping `DISA-STIG:V-245543`
     title `API Server must not use static token authentication`
     platform `kubernetes`
-    agent_type `controller`
     criticality `critical`
     tags `stig,kubernetes,apiserver,authentication,token-auth`
 META_END

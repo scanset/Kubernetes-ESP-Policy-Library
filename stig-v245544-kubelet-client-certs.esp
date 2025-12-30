@@ -6,9 +6,9 @@ META
     esp_scan_id `stig-v245544-kubelet-client-certs`
     control_framework `DISA-STIG`
     control `V-245544`
+    control_mapping `DISA-STIG:V-245544`
     title `API Server must have kubelet client certificate configured`
     platform `kubernetes`
-    agent_type `controller`
     criticality `high`
     tags `stig,kubernetes,apiserver,certificates,kubelet`
 META_END

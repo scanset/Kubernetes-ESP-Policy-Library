@@ -5,9 +5,9 @@ META
     esp_scan_id `tcp-dangerous-ports-closed`
     control_framework `CIS`
     control `2.1`
+    control_mapping `CIS:2.1`
     title `Ensure legacy services are not enabled`
     platform `linux`
-    agent_type `daemon`
     criticality `high`
     tags `cis,network,tcp,services`
 META_END

@@ -6,9 +6,9 @@ META
     esp_scan_id `stig-etcd-tls-certs`
     control_framework `DISA-STIG`
     control `V-242379`
+    control_mapping `DISA-STIG:V-242379`
     title `etcd must have TLS configured`
     platform `kubernetes`
-    agent_type `controller`
     criticality `critical`
     tags `stig,kubernetes,etcd,tls,certificates`
 META_END

@@ -6,9 +6,9 @@ META
     esp_scan_id `stig-v242436-admission-plugins`
     control_framework `DISA-STIG`
     control `V-242436`
+    control_mapping `DISA-STIG:V-242436`
     title `API Server must have admission plugins enabled`
     platform `kubernetes`
-    agent_type `controller`
     criticality `high`
     tags `stig,kubernetes,apiserver,admission,security`
 META_END

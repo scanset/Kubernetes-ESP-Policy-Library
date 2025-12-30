@@ -5,16 +5,16 @@ META
     esp_scan_id `nist-au9-audit-config-protection`
     control_framework `NIST-800-53`
     control `AU-9`
+    control_mapping `NIST-800-53:AU-9`
     title `Protection of Audit Information - auditd.conf`
     platform `linux`
-    agent_type `daemon`
     criticality `high`
     tags `nist,audit,logging,protection`
 META_END
 
 DEF
     OBJECT auditd_config
-        path `/etc/audit/auditd.conf`
+        path `scanfiles/etc/audit/auditd.conf`
     OBJECT_END
 
     STATE restrictive_permissions

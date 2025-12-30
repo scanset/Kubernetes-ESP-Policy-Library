@@ -5,9 +5,9 @@ META
     esp_scan_id `mitre-t1133-ssh-hardening`
     control_framework `MITRE-ATTACK`
     control `T1133`
+    control_mapping `MITRE-ATTACK:T1133`
     title `External Remote Services - SSH Hardening`
     platform `linux`
-    agent_type `daemon`
     criticality `high`
     tags `mitre,initial-access,ssh,remote-services`
 META_END

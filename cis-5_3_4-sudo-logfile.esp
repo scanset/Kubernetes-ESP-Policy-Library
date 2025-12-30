@@ -5,9 +5,9 @@ META
     esp_scan_id `cis-5.3.4-sudo-logfile`
     control_framework `CIS`
     control `5.3.4`
+    control_mapping `CIS:5.3.4`
     title `Ensure sudo log file exists`
     platform `linux`
-    agent_type `daemon`
     criticality `medium`
     tags `cis,sudo,logging,audit`
 META_END

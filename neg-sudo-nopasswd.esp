@@ -5,10 +5,10 @@ META
     esp_scan_id `negative-test-sudo-nopasswd`
     control_framework `TEST`
     control `NEG-002`
+    control_mapping `TEST:NEG-002`
     title `NEGATIVE TEST - Sudoers has NOPASSWD (SHOULD FAIL)`
     platform `linux`
-    agent_type `daemon`
-    criticality `test`
+    criticality `info`
     tags `negative-test,sudo,nopasswd`
 META_END
 

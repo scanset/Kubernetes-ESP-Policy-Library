@@ -5,16 +5,16 @@ META
     esp_scan_id `nist-au12-audit-log-rotation`
     control_framework `NIST-800-53`
     control `AU-12`
+    control_mapping `NIST-800-53:AU-12`
     title `Audit Generation - Log rotation configured`
     platform `linux`
-    agent_type `daemon`
     criticality `medium`
     tags `nist,audit,logging,rotation`
 META_END
 
 DEF
     OBJECT auditd_config
-        path `/etc/audit/auditd.conf`
+        path `scanfiles/etc/audit/auditd.conf`
     OBJECT_END
 
     STATE log_rotation_action
