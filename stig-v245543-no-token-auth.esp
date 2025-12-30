@@ -10,6 +10,7 @@ META
     title `API Server must not use static token authentication`
     platform `kubernetes`
     criticality `critical`
+    agent_type `controller`
     tags `stig,kubernetes,apiserver,authentication,token-auth`
 META_END
 

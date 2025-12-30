@@ -9,6 +9,7 @@ META
     title `Impair Defenses Prevention - Audit config protection`
     platform `linux`
     criticality `high`
+    agent_type `any`
     tags `mitre,defense-evasion,audit,logging`
 META_END
 

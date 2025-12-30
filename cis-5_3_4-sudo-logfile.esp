@@ -9,6 +9,7 @@ META
     title `Ensure sudo log file exists`
     platform `linux`
     criticality `medium`
+    agent_type `daemon`
     tags `cis,sudo,logging,audit`
 META_END
 

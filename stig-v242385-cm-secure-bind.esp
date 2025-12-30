@@ -10,6 +10,7 @@ META
     title `Controller Manager must be bound to localhost`
     platform `kubernetes`
     criticality `high`
+    agent_type `controller`
     tags `stig,kubernetes,controller-manager,network,binding`
 META_END
 

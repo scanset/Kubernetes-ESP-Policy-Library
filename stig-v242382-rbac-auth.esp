@@ -10,6 +10,7 @@ META
     title `Kubernetes API Server must have RBAC authorization enabled`
     platform `kubernetes`
     criticality `high`
+    agent_type `controller`
     tags `stig,kubernetes,apiserver,authorization,rbac`
 META_END
 

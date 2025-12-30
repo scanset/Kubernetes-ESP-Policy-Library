@@ -10,6 +10,7 @@ META
     title `API Server must not use basic authentication`
     platform `kubernetes`
     criticality `critical`
+    agent_type `controller`
     tags `stig,kubernetes,apiserver,authentication,basic-auth`
 META_END
 

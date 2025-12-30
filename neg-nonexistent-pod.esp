@@ -9,6 +9,7 @@ META
     title `NEGATIVE TEST - Non-existent pod (SHOULD FAIL)`
     platform `kubernetes`
     criticality `info`
+    agent_type `any`
     tags `negative-test,kubernetes,existence`
 META_END
 

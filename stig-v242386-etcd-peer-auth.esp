@@ -10,6 +10,7 @@ META
     title `etcd must have peer client certificate authentication enabled`
     platform `kubernetes`
     criticality `critical`
+    agent_type `controller`
     tags `stig,kubernetes,etcd,certificates,peer-auth`
 META_END
 

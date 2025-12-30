@@ -9,6 +9,7 @@ META
     title `Ensure legacy services are not enabled`
     platform `linux`
     criticality `high`
+    agent_type `daemon`
     tags `cis,network,tcp,services`
 META_END
 

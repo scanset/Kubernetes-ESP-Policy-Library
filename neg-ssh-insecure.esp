@@ -9,6 +9,7 @@ META
     title `NEGATIVE TEST - SSH permits root login (SHOULD FAIL)`
     platform `linux`
     criticality `info`
+    agent_type `daemon`
     tags `negative-test,ssh,insecure`
 META_END
 

@@ -9,6 +9,7 @@ META
     title `Audit Generation - Log rotation configured`
     platform `linux`
     criticality `medium`
+    agent_type `any`
     tags `nist,audit,logging,rotation`
 META_END
 

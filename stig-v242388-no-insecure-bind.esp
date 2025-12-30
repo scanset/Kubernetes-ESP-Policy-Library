@@ -10,6 +10,7 @@ META
     title `API Server must not have insecure bind address`
     platform `kubernetes`
     criticality `critical`
+    agent_type `controller`
     tags `stig,kubernetes,apiserver,network,security`
 META_END
 

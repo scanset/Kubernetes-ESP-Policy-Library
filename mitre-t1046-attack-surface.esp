@@ -9,6 +9,7 @@ META
     title `Network Service Discovery - Reduce attack surface`
     platform `linux`
     criticality `medium`
+    agent_type `daemon`
     tags `mitre,discovery,network,ports`
 META_END
 

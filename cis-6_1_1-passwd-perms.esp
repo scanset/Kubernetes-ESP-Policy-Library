@@ -9,6 +9,7 @@ META
     title `Ensure permissions on /etc/passwd are configured`
     platform `linux`
     criticality `high`
+    agent_type `daemon`
     tags `cis,filesystem,authentication,permissions`
 META_END
 

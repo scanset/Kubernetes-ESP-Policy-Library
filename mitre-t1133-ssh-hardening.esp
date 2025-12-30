@@ -9,6 +9,7 @@ META
     title `External Remote Services - SSH Hardening`
     platform `linux`
     criticality `high`
+    agent_type `any`
     tags `mitre,initial-access,ssh,remote-services`
 META_END
 

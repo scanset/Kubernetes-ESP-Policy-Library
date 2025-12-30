@@ -9,6 +9,7 @@ META
     title `Protection of Audit Information - auditd.conf`
     platform `linux`
     criticality `high`
+    agent_type `any`
     tags `nist,audit,logging,protection`
 META_END
 
