@@ -15,7 +15,7 @@ META_END
 
 DEF
     OBJECT sshd_config_insecure
-        path `/etc/ssh/sshd_config_insecure`
+        path `/etc/ssh/sshd_config`
     OBJECT_END
 
     # This check looks for secure config - will FAIL on insecure file
